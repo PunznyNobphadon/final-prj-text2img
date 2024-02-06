@@ -1,0 +1,13 @@
+{% extends "imageaiapp/base.html" %}
+{% block title %}Sign in{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto social-container my-2 order-md-1">
+        <form action="/logins/" method="post">
+            {% csrf_token %}
+          <input type="text" name="username"/>
+          <input type="password" name="password"/>
+          <button type="submit">Login</button>
+        </form>
+</div>
+{% endblock %}

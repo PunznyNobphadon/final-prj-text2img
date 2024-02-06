@@ -1,0 +1,14 @@
+{% extends "imageaiapp/base.html" %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<div class="row">
+<div class="col-md-8 mx-auto social-container my-2 order-md-1">
+    <form action="/registes/" method="post">
+     {% csrf_token %}
+     <input type="text"     name="username"/>
+     <input type="password" name="password1"/>
+     <input type="password" name="password2"/>
+     <button type="submit">ลงทะเบียน</button>
+    </form>
+</div>
+{% endblock %}

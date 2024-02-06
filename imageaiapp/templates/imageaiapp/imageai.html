@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Text-to-Image</title>
+</head>
+<body class="flex h-screen w-full bg-light bg-cover">
+    <div class="w-2/3 mx-auto my-auto justify-center
+    bg-blue-100/[.68] bg-blend-multiply
+    rounded-xl drop-shadow-xl
+    flex flex-col
+    ">
+    <h1 class="center text-4xl mx-auto my-2">Text to Image</h1>
+    <form action="/imageai/" method="POST">
+        {% csrf_token %}
+        <div class="w-full flex my-6">
+            <input class="px-10 py-2 rounded-xl mx-auto" 
+                type="text" name="prompt" placeholder="image description"/>
+        </div>
+        <div class="w-full flex">
+            <button class="border border-gray-800 rounded-xl py-2 px-6 mx-auto" 
+                type="submit">Generate Image</button>
+        </div>
+    </form>
+    <div class="mx-auto py-6 px-10">
+        <img class="rounded-xl drop-shadow-xl" src="{'imageaiapp/ddpm/imageforyou.png'}" alt="imageforyou"/>
+    </div>
+    </div>
+</body>
+</html>
