@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@100..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+/* Font */
+.anuphan {
+  font-family: "Anuphan", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+
+.poppins-medium {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.poppins-extralight {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+}
+/* Font */
+
+/* NAVBAR */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: transparent;
+}
+header .navbar {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+.navbar .logo {
+    font-size: 2.1rem;
+    font-weight: 600;
+}
+.navbar .logo span {
+    color: plum;
+}
+.navbar .menu-links {
+    display: flex;
+    gap: 30px;
+}
+.navbar a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+.navbar a:hover {
+    color: plum;
+}
+ul {
+    list-style-type: none;
+}  
+/* NAVBAR */
+
+/* BODY*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    background: url("https://firebasestorage.googleapis.com/v0/b/imagesss-7501d.appspot.com/o/1308898.jpg?alt=media&token=702b0d44-047d-41b3-a60a-bcfa2772acfc");
+    background-size: cover;
+    background-position: center;
+    padding: 100px;
+}
+.wrapper {
+    width: 500px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(50px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+.wrapper h1 {
+    font-size: 36px;
+    text-align: center;
+}
+.wrapper p {
+    width: 100%;
+    height: 50px;
+    margin: 80px 0;
+}
+p input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 20px 45px 20px 20px;
+}
+p input::placeholder {
+    color: #fff;
+}
+p input .helptext {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+p .helptext {
+    color: rgb(213, 213, 213);
+}
+.wrapper ul {
+    width: 100%;
+    height: 50px;
+}
+ul li {
+    color: rgb(213, 213, 213);
+    width: 100%;
+    height: 100%;
+}
+.wrapper .btn {
+    margin: 20px 0;
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    cursor: pointer;
+    font-size: 16px;
+    color: black;
+    font-weight: 600;
+}
+.wrapper .register-link {
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+.register-link p a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+.register-link p a:hover {
+    text-decoration: underline;
+}
+/* BODY */

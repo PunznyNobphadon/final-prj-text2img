@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <title>Home Get Started</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="{% url 'home' %}" class="logo">T2S<span>.</span></a>
+            <ul class="menu-links">
+                <li><a href="#">About</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'profile' %}" class="navbar-item">{{ user.username }}</a></li>
+                <li><a href="{% url 'logout' %}" class="navbar-item">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}" class="navbar-item">Login</a></li>
+                <li><a href="{% url 'register' %}" class="navbar-item">Register</a></li>
+                {% endif %}
+                {% if user.is_staff %}
+                <li><a href="{% url 'manage_users' %}">Manage Users</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <section class="hero-section">
+        <div class="content-container">
+            <div class="text-content">
+                <h1 class="poppins-medium">Text to Sticker.</h1>
+                <p>ปัจจุบันสติกเกอร์มีประโยชน์หลายประการทั้งในการสื่อสารและแสดงออกทางอารมณ์ สื่อความคิด เสริมแบรนด์ และ สนับสนุนกิจกรรมทางการตลาด โดยสามารถสร้างสติ๊กเกอร์ผ่านการที่ผู้ใช้งานป้อนคำสั่งต่างๆ ตามที่ต้องการ เเล้วคำสั่งนั้นจะสามารถสร้างรูปภาพสติ๊กเกอร์นั้นออกมาตามคำสั่งของผู้ใช้งาน.</p>
+                {% if user.is_authenticated %}
+                <button><a href="{% url 'generate_image' %}" class="btn btn-primary">Get Started</a></button>
+                <a href="{% url 'add_image' %}" class="btn btn-primary">Add Image</a>
+                {% else %}
+                <button><a href="{% url 'login' %}" class="textbegin">กรุณาเข้าสู่ระบบก่อนใช้งาน</a></button>
+                {% endif %}
+            </div>
+            <div class="image-content">
+                <img src="https://firebasestorage.googleapis.com/v0/b/imagesss-7501d.appspot.com/o/00005-216780987.png?alt=media&token=8a889fd5-a800-4efc-b893-ea6d21a1213c" alt="Image-Begin">
+            </div>
+        </div>
+    </section>
+    {% if user.is_authenticated %}
+    <div class="image-gallery">
+        {% for image in images %}
+            <div class="image-item">
+                <img src="{{ image.image.url }}" alt="{{ image.prompt }}" class="gallery-image">
+                <div class="card-text">
+                    <p class="poppins-extralight">{{ image.prompt }}</p>
+                    <a href="{% url 'edit_image' image.pk %}" class="btn-edit">Edit</a>
+                    <a href="{% url 'delete_image' image.pk %}" class="btn-delete">Delete</a>
+                    <a href="{{ image.image.url }}" download>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M160-80v-80h640v80H160Zm320-160L200-600h160v-280h240v280h160L480-240Zm0-130 116-150h-76v-280h-80v280h-76l116 150Zm0-150Z"/></svg>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</body>
+</html>

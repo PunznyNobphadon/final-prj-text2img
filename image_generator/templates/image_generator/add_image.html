@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/add_image.css' %}">
+    <title>Add Image</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="{% url 'home' %}" class="logo">T2S<span>.</span></a>
+            <ul class="menu-links">
+                <li><a href="#">About</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'profile' %}" class="navbar-item">{{ user.username }}</a></li>
+                <li><a href="{% url 'logout' %}" class="navbar-item">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}" class="navbar-item">Login</a></li>
+                <li><a href="{% url 'register' %}" class="navbar-item">Register</a></li>
+                {% endif %}
+                {% if user.is_staff %}
+                <li><a href="{% url 'manage_users' %}">Manage Users</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <div class="wrapper">
+        <form method="POST" enctype="multipart/form-data">
+            <h1 class="poppins-medium">Add Image</h1>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Add Image</button>
+        </form>
+    </div>
+</body>
+</html>

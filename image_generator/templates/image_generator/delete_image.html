@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/delete_image.css' %}">
+    <title>Delete Image</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="{% url 'home' %}" class="logo">T2S<span>.</span></a>
+            <ul class="menu-links">
+                <li><a href="#">About</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'profile' %}" class="navbar-item">{{ user.username }}</a></li>
+                <li><a href="{% url 'logout' %}" class="navbar-item">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}" class="navbar-item">Login</a></li>
+                <li><a href="{% url 'register' %}" class="navbar-item">Register</a></li>
+                {% endif %}
+                {% if user.is_staff %}
+                <li><a href="{% url 'manage_users' %}">Manage Users</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <div class="centerimg-container">
+        <h1 class="poppins-medium">Delete Image</h1>
+        <p>Are you sure you want to delete this image?</p>
+        <img src="{{ image.image.url }}" alt="{{ image.prompt }}" class="gallery-image">
+            <form method="POST">   
+                {% csrf_token %}
+                <button type="submit" class="btn">Delete</button>
+            </form>
+        <div class="register-link">
+            <p><a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>.</p>
+        </div>
+    </div>
+</body>
+</html>

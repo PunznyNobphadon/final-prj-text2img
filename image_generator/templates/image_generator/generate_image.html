@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/generate_image.css' %}">
+    <title>Generate Image</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="{% url 'home' %}" class="logo">T2S<span>.</span></a>
+            <ul class="menu-links">
+                <li><a href="#">About</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'profile' %}" class="navbar-item">{{ user.username }}</a></li>
+                <li><a href="{% url 'logout' %}" class="navbar-item">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}" class="navbar-item">Login</a></li>
+                <li><a href="{% url 'register' %}" class="navbar-item">Register</a></li>
+                {% endif %}
+                {% if user.is_staff %}
+                <li><a href="{% url 'manage_users' %}">Manage Users</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+<div class="wrapper">
+    <form method="POST">
+        <h1>Generate Image</h1>
+        {% csrf_token %}
+        <p>
+            <label for="prompt">Prompt:</label>
+            <input type="text" id="prompt" name="prompt" required>
+        </p>
+        <p>
+            <label for="model">Choose a model:</label>
+            <select id="model" name="model">
+                <option value="Ojimi/anime-kawai-diffusion">Anime Kawaii</option>
+                <option value="runwayml/stable-diffusion-v1-5">Stable Diffusion v1.5</option>
+                <option value="stabilityai/stable-diffusion-2">Stable Diffusion V2</option>
+                <option value="stabilityai/stable-diffusion-2-1-base">Stable Diffusion V2.1 Base </option>
+            </select>
+        </p>
+        <p>
+            <label for="style">Choose a style:</label>
+            <select id="style" name="style">
+                <option value=",Die-cut sticker,white background, illustration minimalism, vector, pastel colors">สติ๊กเกอร์</option>
+                <option value=", 3d isometric render, white background, ambient occlusion, unity engine">ไอโซเมทริกซ์</option>
+                <option value=", smooth soft skin, big dreamy eyes, beautiful intricate colored hair, symmetrical, anime wide eyes, soft lighting, detailed face, by makoto shinkai, stanley artgerm lau, wlop, rossdraws, concept art, digital painting, looking into camera">ภาพเสมือนจริง</option>
+                <option value=",vector illustration, angry eyes, football team emblem logo, 2d flat, centered">โลโก้ทีม</option>
+                <option value=", realistic texture, visible stitch line, soft smooth lighting, vibrant studio lighting, modular constructivism, physically based rendering">ตุ๊กตา</option>
+                <option value=", standing character, soft smooth lighting, soft pastel colors, skottie young, 3d blender render, polycount, modular constructivism, pop surrealism, physically based rendering">โมเดล 3d</option>
+                <option value=",Retro comic style artwork , comic book cover, symmetrical, vibrant">ภาพคอมมิค</option>
+            </select>
+        </p>
+        <button type="submit" class="btn">Generate</button>
+    </form>
+</div>
+</body>
+</html>
