@@ -1,9 +1,0 @@
-{% extends 'base.html' %}
-
-{% block content %}
-    <h2>User Profile</h2>
-    <!-- แสดงข้อมูลส่วนตัว -->
-    <p>{{ user_profile.bio }}</p>
-    <!-- เพิ่มลิงก์ไปยังหน้าแก้ไขข้อมูล -->
-    <a href="{% url 'edit_profile' %}">Edit Profile</a>
-{% endblock %}
