@@ -27,7 +27,7 @@
         </nav>
     </header>
 
-    <div class="centerimg-container">
+    <div class="wrapper">
         <h1 class="poppins-medium">Delete Image</h1>
         <p>Are you sure you want to delete this image?</p>
         <img src="{{ image.image.url }}" alt="{{ image.prompt }}" class="gallery-image">
@@ -36,7 +36,7 @@
                 <button type="submit" class="btn">Delete</button>
             </form>
         <div class="register-link">
-            <p><a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>.</p>
+            <p><a href="{% url 'home' %}">Cancel</a>.</p>
         </div>
     </div>
 </body>

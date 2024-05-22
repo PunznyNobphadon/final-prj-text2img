@@ -24,18 +24,21 @@ def generate_image(request):
         # เลือกโมเดลตามที่กำหนด
         if model_id == "Ojimi/anime-kawai-diffusion":
             pipe = DiffusionPipeline.from_pretrained(model_id)
-            pipe = pipe.to("cuda")
+            pipe.enable_sequential_cpu_offload()
+            pipe.enable_attention_slicing("max")
         elif model_id == "runwayml/stable-diffusion-v1-5":
             pipe = StableDiffusionPipeline.from_pretrained(model_id, safety_checker=None)
             pipe.enable_sequential_cpu_offload()
         elif model_id == "stabilityai/stable-diffusion-2":
             pipe = StableDiffusionPipeline.from_pretrained(model_id, safety_checker=None)
             pipe.enable_sequential_cpu_offload()
+            pipe.enable_attention_slicing("max")
         elif model_id == "stabilityai/stable-diffusion-2-1-base":
             pipe = StableDiffusionPipeline.from_pretrained(model_id, safety_checker=None)
             pipe.enable_sequential_cpu_offload()
+            pipe.enable_attention_slicing("max")
         
-        generated_image = pipe(prompt_with_style + "Sticker" , negative_prompt="lowres, bad anatomy, inappropriate content, explicit, suggestive").images[0]
+        generated_image = pipe(prompt_with_style , negative_prompt="lowres, bad anatomy, inappropriate content, explicit, suggestive").images[0]
         
         # บันทึกรูปภาพ
         img_name = f'{prompt}.png'

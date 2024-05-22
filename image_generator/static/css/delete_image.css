@@ -57,7 +57,7 @@ header .navbar {
 }
 ul {
     list-style-type: none;
-}   
+}  
 /* NAVBAR */
 
 /* BODY*/
@@ -75,14 +75,9 @@ body {
     background: url("https://firebasestorage.googleapis.com/v0/b/imagesss-7501d.appspot.com/o/1308898.jpg?alt=media&token=702b0d44-047d-41b3-a60a-bcfa2772acfc");
     background-size: cover;
     background-position: center;
-    padding: 200px;
+    padding: 150px;
 }
-h1 {
-    color: #ffffff;
-    text-align: center;
-}
-
-centerimg-container {
+.wrapper {
     width: 420px;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .2);
@@ -92,8 +87,16 @@ centerimg-container {
     border-radius: 10px;
     padding: 30px 40px;
 }
-
-.centerimg {
+.wrapper h1 {
+    font-size: 36px;
+    text-align: center;
+}
+.wrapper p {
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+.wrapper img {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -101,30 +104,22 @@ centerimg-container {
     width: 300px;
     height: 300px;
 }
-
-.text-icon-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-    width: 300px;
-    margin-left: auto;
-    margin-right: auto;
+p input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 20px 45px 20px 20px;
 }
-
-p {
-    color: #ffffff;
-    margin: 0;
+p input::placeholder {
+    color: #fff;
 }
-
-a {
-    color: #ffffff;
-    display: inline-flex;
-    align-items: center;
-    text-decoration: none;
-}
-/* Add styles for buttons */
-.centerimg-container .btn {
+.wrapper .btn {
     margin: 20px 0;
     width: 100%;
     height: 45px;
@@ -138,7 +133,7 @@ a {
     color: black;
     font-weight: 600;
 }
-.centerimg-container .register-link {
+.wrapper .register-link {
     font-size: 14.5px;
     text-align: center;
     margin: 20px 0 15px;
@@ -151,4 +146,4 @@ a {
 .register-link p a:hover {
     text-decoration: underline;
 }
-/* BODY*/
+/* BODY */
