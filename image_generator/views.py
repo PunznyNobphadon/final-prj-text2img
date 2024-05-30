@@ -99,6 +99,11 @@ def home(request):
     images = GeneratedImage.objects.filter(shared=True).order_by('-created_at')
     return render(request, 'image_generator/home.html', {'images': images})
 
+# About
+
+def about(request):
+    return render(request, 'image_generator/about.html')
+
 #login และ User
 
 def register(request):
@@ -148,4 +153,4 @@ def delete_user(request, user_id):
     if request.method == 'POST':
         user.delete()
         return redirect('manage_users')
-    return render(request, 'image_generator/delete_user.html', {'user': user})
+    return render(request, 'image_generator/manage_users.html', {'user': user})
