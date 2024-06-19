@@ -66,7 +66,7 @@ def display_image(request, pk):
     return render(request, 'image_generator/display_image.html', {'image': image})
 
 # เพิ่ม , แก้ไข , ลบ
-
+@login_required
 def add_image(request):
     if request.method == 'POST':
         form = GeneratedImageForm(request.POST, request.FILES)
@@ -77,6 +77,7 @@ def add_image(request):
         form = GeneratedImageForm()
     return render(request, 'image_generator/add_image.html', {'form': form})
 
+@login_required
 def edit_image(request, pk):
     image = get_object_or_404(GeneratedImage, pk=pk)
     if request.method == 'POST':
@@ -88,6 +89,7 @@ def edit_image(request, pk):
         form = GeneratedImageForm(instance=image)
     return render(request, 'image_generator/edit_image.html', {'form': form, 'image': image})
 
+@login_required
 def delete_image(request, pk):
     image = get_object_or_404(GeneratedImage, pk=pk)
     if request.method == 'POST':
