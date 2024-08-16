@@ -13,7 +13,7 @@ urlpatterns = [
     path('delete/<int:pk>/', views.delete_image, name='delete_image'),
     path('register/', views.register, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='image_generator/login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(template_name='image_generator/logout.html'), name='logout'),
+    #path('logout/', auth_views.LogoutView.as_view(template_name='image_generator/logout.html'), name='logout'),
     path('profile/', views.profile, name='profile'),
     path('logout/', views.logout_view, name='logout'),
     path('manage_users/', views.manage_users, name='manage_users'),
